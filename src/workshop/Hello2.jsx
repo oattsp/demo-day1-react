@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const Hello2 = () => {
-  const [name, updateName] = useState("...");
-  const [age, updateAge] = useState("...");
+  const [name, updateName] = useState("");
+  const [age, updateAge] = useState("0");
 
   const updateNameHandle = (event) => {
     updateName(event.target.value);
@@ -15,10 +15,10 @@ const Hello2 = () => {
   return (
     <div>
       <form>
-        <Name onChangeName={updateNameHandle} />
+        <Name name={name} onChangeName={updateNameHandle} />
         <br />
         <br />
-        <Age onChangeAge={updateAgeHandle} />
+        <Age age={age} onChangeAge={updateAgeHandle} />
         <br />
         <br />
         <Show name={name} age={age} />
@@ -27,18 +27,18 @@ const Hello2 = () => {
   );
 };
 
-const Name = ({ onChangeName }) => {
+const Name = ({ name, onChangeName }) => {
   return (
     <React.Fragment>
-      Name : <input type="text" onChange={onChangeName} />
+      Name : <input value={name} type="text" onChange={onChangeName} />
     </React.Fragment>
   );
 };
 
-const Age = ({ onChangeAge }) => {
+const Age = ({ age, onChangeAge }) => {
   return (
     <React.Fragment>
-      Age : <input type="text" onChange={onChangeAge} />
+      Age : <input value={age} type="text" onChange={onChangeAge} />
     </React.Fragment>
   );
 };
