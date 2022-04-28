@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-const Hello = () => {
-  const [name, updateName] = useState("");
+const Hello = ({ initialName, onCall }) => {
+  const [name, updateName] = useState(initialName);
 
   const handleName = (event) => {
+    onCall(event.target.value);
     updateName(event.target.value);
   };
 
